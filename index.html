@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Het Patel - Creative Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background: #f0f2f5;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 15px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 5px;
+            left: 50%;
+            background: #ffd700;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 50%;
+            left: 25%;
+        }
+
+        /* Header */
+        header {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #6e48aa, #9d50bb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(30deg);
+            animation: headerAnim 20s linear infinite;
+        }
+
+        @keyframes headerAnim {
+            0% { transform: translateX(-50%) rotate(30deg); }
+            100% { transform: translateX(50%) rotate(30deg); }
+        }
+
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 8px solid white;
+            margin-bottom: 20px;
+            object-fit: cover;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            color: #1e3c72;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #9d50bb, #6e48aa);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(157, 80, 187, 0.1);
+            transform: rotate(45deg);
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover::before {
+            top: 0;
+            left: 0;
+        }
+
+        /* Hobbies */
+        .hobbies-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .hobby-item {
+            background: #6e48aa;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .hobby-item:hover {
+            background: #9d50bb;
+            transform: scale(1.1);
+        }
+
+        /* Contact */
+        .contact-info {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .contact-item {
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            display: inline-block;
+            width: 300px;
+        }
+
+        footer {
+            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 60px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%231e3c72" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#hobbies">Hobbies</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="home">
+        <div class="container">
+            <img src="your-photo.jpg" alt="Your Name" class="profile-img">
+            <div>
+                <h1>Het Patel</h1>
+                <p>Web Developer</p>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="container">
+        <h2>About Me</h2>
+        <p>
+            I am Het Patel and I am Currently pursuing B-Tech Degree Major in Information and Communication Technology and Minor
+in Computational Data Science. Top-performing college student with strong skills in DSA. Adaptable
+to any environment and consistently achieving ambitious goals on schedule.
+        </p>
+    </section>
+
+    <section id="skills" class="container">
+        <h2>My Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Technical skills</h3>
+                <p>Python with libraries, HTML, CSS and JavaScript, C, C++, MySQL, Data
+Structure & Algorithm, Object Oriented Programming (OOP)</p>
+            </div>
+            <div class="skill-card">
+                <h3>Soft Skills</h3>
+                <p>Communication skills, Learning skills, Team work</p>
+            </div>
+            <!-- Add more skills here if needed -->
+        </div>
+    </section>
+      
+       <section id="skills" class="container">
+        <h2>My Projects</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Diabetes Prediction System</h3>
+                <p>
+Developed a system to predict diabetes using logistic regression.
+Preprocessed data to handle missing values and outliers.
+Evaluated model performance on unseen data, achieving a 75% accuracy rate.
+Achieved high accuracy, aiding in early diabetes detection.</p>
+            </div>
+            <div class="skill-card">
+                <h3>Simon Say’s Game</h3>
+                <p>Developed an interactive "Simon Says" game using HTML, CSS, and JavaScript.
+Implemented game logic for random sequence generation and user input validation.</p>
+            </div>
+            <!-- Add more skills here if needed -->
+        </div>
+    </section>
+
+
+    <section id="hobbies" class="container">
+        <h2>EXPERIENCE</h2>
+        <div class="hobbies-list">
+            <span class="hobby-item">Rural Internship</span>
+            <span class="hobby-item">IBM SkillBuild, AI Intern</span>
+            
+            <!-- Add your hobbies here -->
+        </div>
+    </section>
+
+    <section id="contact" class="container">
+        <h2>Get in Touch</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                Email: hetpatel1177@gmail.com
+            </div>
+            <div class="contact-item">
+                Phone: +91-9313187764 
+            </div>
+            <div class="contact-item">
+               linkedin: [www.linkedin.com/in/het-kamleshkumar-patel]
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>©️ 2025 Het Patel. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animate elements on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(50px)';
+            section.style.transition = 'all 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
